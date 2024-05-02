@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import User, Base
+from models import User, Base ,Task
 engine = create_engine('sqlite:///test.db')
 
 session_maker = sessionmaker(bind=engine)
@@ -18,6 +18,12 @@ with session_maker() as session:
         first_name="John2",
         last_name="Doe2",
     )
+    user4 = Task(
+        username="user4",
+        first_name="Олег",
+        last_name="Тинькофф",
+    )
+
     session.add_all([user2, user3])
     session.commit()
 
